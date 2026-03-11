@@ -20,4 +20,38 @@ Les Smart Contract Accounts :
     - Le déploiement d'un contrat intelligent coûte du "Gas", et ces comptes ne peuvent pas initier de transactions de leur propre chef.
 
 
-Question 3 :
+Question 4 : Dans un réseau décentralisé, comment les noeuds parviennent-ils à un consensus sur l'état actuel de la blockchain ?
+
+Pour commencer le consensus c'est le principe de mise en accord du réseau lors d'une modification.
+
+Lorsqu'un mineur a vérifié les transactions et créé un bloc, il le diffuse au réseau pour avoir validation par les autres noeuds.
+Puisque le minage est une compétition, il peut y avoir des conflits si plusieurs blocs sont trouvés en même temps même si c'est très rare.
+Le réseau utilise alors la règle "Longest chain rules". 
+La chaîne la plus longue est celle que les noeuds individuels acceptent comme la version finale et valide de la blockchain.
+
+Question 5 : Quelles sont les différences entre le Proof of Work, le Proof of Stake et le Proof of Authority ?
+
+Proof of Work (PoW) : 
+    Pour ajouter un bloc, les mineurs doivent rivaliser pour résoudre un puzzle cryptographique difficile en utilisant la puissance de calcul de leurs ordinateurs. 
+    Le premier à résoudre le puzzle reçoit une récompense.
+
+Proof of Stake (PoS) :
+    Il n'y a pas de compétition mathématique ; le créateur du bloc est choisi par un algorithme en fonction de sa mise (son "stake") en cryptomonnaie. 
+    Il n'y a pas de récompense de bloc, le validateur récupère uniquement les frais de transaction
+
+Proof of Authority (PoA) :
+    Au lieu de mobiliser de la puissance de calcul (PoW) ou de l'argent (PoS), la validation s'appuie sur la réputation. 
+    Un groupe restreint de noeuds pré-approuvés (les "autorités") valide les blocs. C'est très rapide mais plus centralisé.
+
+
+
+Question 6 : Expliquer via un exemple comme un noeud léger utilise l’arbre de Merkel pour vérifier si une transaction existe dans un bloc ?
+    
+Un noeud léger, comme un portefeuille mobile, ne télécharge pas l'intégralité de la blockchain, mais maintient seulement les en-têtes des blocs.
+L'en-tête de la chaîne de Preuve de Travail la plus longue contient notamment la Racine de Merkle (Merkle Root).
+
+Pour vérifier si une transaction spécifique (par exemple Tx3) existe bien dans un bloc, le noeud léger utilise la vérification de paiement simplifiée (SPV). 
+Il interroge les noeuds complets (Full nodes) pour récupérer uniquement la "Branche de Merkle" (Merkle Branch) relative à Tx3.
+
+En recalculant les hachages de cette branche jusqu'au sommet, si le résultat final correspond exactement à la Merkle Root stockée localement dans l'en-tête,
+le noeud léger a la preuve mathématique que la transaction est bien incluse dans ce bloc, sans avoir eu besoin de télécharger les milliers d'autres transactions.
