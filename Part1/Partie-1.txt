@@ -1,0 +1,23 @@
+Question 1 : Pourquoi une valeur de hachage est-elle stockée dans l'en-tête de chaque bloc de la
+blockchain ? Comment cette valeur contribue-t-elle à l'immutabilité de la blockchain ?
+
+Pour commencer dans chaque entête est stocké le hash du bloc précédent, ceci permet de figé le block précedent.
+Maintenant si un attaquant essaye de'altérer une transaction dans le bloc N, le hachage de ce bloc N va complètement changer (à cause de l'effet d'avalanche des fonctions de hachage).
+Par conséquent, le bloc N+1, qui contenait l'ancien hachage du bloc N, devient invalide.
+
+
+Question 2 : En Ethereum quelles sont les différences entre externally owned account (EOA) et smart
+contract account ?
+
+Les Externally Owned Accounts (EOA) :
+    - Il sont contrôlés par des utilisateurs humains ou des scripts via une clé privée cryptographique.
+    - Ils sont gratuits à créer.
+    - Ils ne contiennent ni code ni espace de stockage persistant.
+    - ils ont la particularité d'être les seuls à pouvoir initier spontanément une transaction sur le réseau.
+
+Les Smart Contract Accounts :
+    - Ils sont contrôlés par leur propre code et possèdent un espace de stockage persistant.
+    - Le déploiement d'un contrat intelligent coûte du "Gas", et ces comptes ne peuvent pas initier de transactions de leur propre chef.
+
+
+Question 3 :
